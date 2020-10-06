@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/plugins/polygon_to_line" >
+        <file>icon.png</file>
+    </qresource>
+</RCC>
