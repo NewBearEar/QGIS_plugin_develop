@@ -205,10 +205,12 @@ class Polygon2Line:
             self.dlg = Polygon2LineDialog()
             # 添加控件
             outputFileBtn = self.dlg.pushButton_2  # type:QPushButton
+            openFileBtn = self.dlg.pushButton_1 # type:QPushButton
             startBtn = self.dlg.startButton  # type:QPushButton
             # 连接槽函数,只连接一次
             outputFileBtn.clicked.connect(self.openSaveFile)
             startBtn.clicked.connect(self.start)
+            openFileBtn.clicked.connect(self.openLayerFile)
         # 每次打开窗口初始化控件值
         self.dlg.lineEdit.setText('')
         self.outputFileName = None
@@ -222,6 +224,15 @@ class Polygon2Line:
             # Do something useful here - delete the line containing pass and
             # substitute with your code.
             pass
+
+    def openLayerFile(self):
+        filename, _ = QFileDialog.getOpenFileName(caption='Open File', directory='.', filter='shapefile(*.shp)')
+        pathlist = filename.split('/')
+        nameWithExtend = pathlist[-1].split('.')
+        nameWithoutExtend = nameWithExtend[0]
+
+        layer = QgsVectorLayer(filename, nameWithoutExtend)
+        QgsProject.instance().addMapLayer(layer)
 
     def startConvert(self,layer:QgsMapLayer):
 
@@ -386,8 +397,12 @@ class Polygon2Line:
     def createNewLineLayerByGraph(self,graph:nx.Graph,nodeCoorDict,layerCRS):
         edgeList = graph.edges
         layerCRS_str = layerCRS.authid()
+
+        mlCombobox = self.dlg.mMapLayerComboBox  # type:QgsMapLayerComboBox
+        curLy = mlCombobox.currentLayer()  # type:QgsMapLayer
+
         uri = "LineString?crs="+layerCRS_str+"&field=id:integer&field=left:integer&field=right:integer"
-        lineLayer = QgsVectorLayer(uri,"Polygon to Line layer",  "memory")
+        lineLayer = QgsVectorLayer(uri,curLy.name()+"ToLine",  "memory")
         lineDataProvider = lineLayer.dataProvider()
         count = 0
         for edge in edgeList:
@@ -438,6 +453,9 @@ class Polygon2Line:
         # pydevd_pycharm.settrace('localhost', port=53100, stdoutToServer=True, stderrToServer=True)
         curLy = mlCombobox.currentLayer()  # type:QgsMapLayer
         # print(self.startConvert(curLy))
+        if not self.dlg.lineEdit.text():
+            QMessageBox.warning(None, 'Warning！', '输出图层位置不能为空')
+            return
         nodeCoorDict, graph, isConvertSuccessed = self.startConvert(curLy)
         # 图层坐标系
         layerCRS = curLy.crs()
@@ -448,5 +466,6 @@ class Polygon2Line:
             QMessageBox.information(None, 'Convert Successfully!', '面转线成功!')
         checkBox1 = self.dlg.checkBox  # type:QCheckBox
         if checkBox1.isChecked():
-            QgsProject.instance().addMapLayer(ply2lineLayer)
+            lyname = self.dlg.lineEdit.text().split('/')[-1].split('.')[0]
+            QgsProject.instance().addMapLayer(QgsVectorLayer(self.dlg.lineEdit.text(),lyname))
         # print(graph.edges)

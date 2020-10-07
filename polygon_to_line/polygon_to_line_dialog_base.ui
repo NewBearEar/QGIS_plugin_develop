@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>505</width>
-    <height>360</height>
+    <width>711</width>
+    <height>358</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,9 +16,9 @@
   <widget class="QDialogButtonBox" name="button_box">
    <property name="geometry">
     <rect>
-     <x>110</x>
-     <y>290</y>
-     <width>341</width>
+     <x>20</x>
+     <y>300</y>
+     <width>401</width>
      <height>51</height>
     </rect>
    </property>
@@ -26,14 +26,14 @@
     <enum>Qt::Horizontal</enum>
    </property>
    <property name="standardButtons">
-    <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+    <set>QDialogButtonBox::Cancel|QDialogButtonBox::Help|QDialogButtonBox::Ok</set>
    </property>
   </widget>
   <widget class="QgsMapLayerComboBox" name="mMapLayerComboBox">
    <property name="geometry">
     <rect>
-     <x>60</x>
-     <y>70</y>
+     <x>30</x>
+     <y>60</y>
      <width>331</width>
      <height>31</height>
     </rect>
@@ -42,8 +42,8 @@
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>60</x>
-     <y>40</y>
+     <x>30</x>
+     <y>30</y>
      <width>141</width>
      <height>20</height>
     </rect>
@@ -55,9 +55,9 @@
   <widget class="QPushButton" name="pushButton_1">
    <property name="geometry">
     <rect>
-     <x>410</x>
-     <y>70</y>
-     <width>41</width>
+     <x>370</x>
+     <y>60</y>
+     <width>51</width>
      <height>31</height>
     </rect>
    </property>
@@ -68,8 +68,8 @@
   <widget class="QLineEdit" name="lineEdit">
    <property name="geometry">
     <rect>
-     <x>60</x>
-     <y>140</y>
+     <x>30</x>
+     <y>130</y>
      <width>331</width>
      <height>31</height>
     </rect>
@@ -78,9 +78,9 @@
   <widget class="QPushButton" name="pushButton_2">
    <property name="geometry">
     <rect>
-     <x>410</x>
-     <y>140</y>
-     <width>41</width>
+     <x>370</x>
+     <y>130</y>
+     <width>51</width>
      <height>31</height>
     </rect>
    </property>
@@ -91,8 +91,8 @@
   <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
-     <x>60</x>
-     <y>110</y>
+     <x>30</x>
+     <y>100</y>
      <width>141</width>
      <height>20</height>
     </rect>
@@ -104,8 +104,8 @@
   <widget class="QCheckBox" name="checkBox">
    <property name="geometry">
     <rect>
-     <x>60</x>
-     <y>190</y>
+     <x>30</x>
+     <y>180</y>
      <width>181</width>
      <height>26</height>
     </rect>
@@ -117,11 +117,17 @@
   <widget class="QPushButton" name="startButton">
    <property name="geometry">
     <rect>
-     <x>370</x>
-     <y>190</y>
+     <x>340</x>
+     <y>180</y>
      <width>81</width>
      <height>31</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <weight>50</weight>
+     <bold>false</bold>
+    </font>
    </property>
    <property name="text">
     <string>运行</string>
@@ -130,14 +136,87 @@
   <widget class="QProgressBar" name="progressBar">
    <property name="geometry">
     <rect>
-     <x>60</x>
-     <y>250</y>
+     <x>30</x>
+     <y>240</y>
      <width>391</width>
      <height>31</height>
     </rect>
    </property>
    <property name="value">
     <number>24</number>
+   </property>
+  </widget>
+  <widget class="QTextBrowser" name="textBrowser">
+   <property name="geometry">
+    <rect>
+     <x>440</x>
+     <y>20</y>
+     <width>251</width>
+     <height>321</height>
+    </rect>
+   </property>
+   <property name="html">
+    <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Ubuntu'; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;Polygon to Line&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;面转线算法&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:14pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;通过构建无向图网络的方式，将面状要素转换为带属性的线状要素，并记录每条边的拓扑关系（左右面要素的ID号）。运行算法前请保证源数据不存在空洞、压盖等拓扑错误&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;By constructing undirected graph , the polygon features are transformed into polyline features with attributes, and the topological relationship of each edge (ID number of left and right face features) is recorded.Before running the algorithm, please ensure that the source data does not have topology errors such as holes and covers&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+  </widget>
+  <widget class="Line" name="line">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>10</y>
+     <width>411</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
+  </widget>
+  <widget class="Line" name="line_2">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>20</y>
+     <width>20</width>
+     <height>271</height>
+    </rect>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Vertical</enum>
+   </property>
+  </widget>
+  <widget class="Line" name="line_3">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>280</y>
+     <width>411</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
+  </widget>
+  <widget class="Line" name="line_4">
+   <property name="geometry">
+    <rect>
+     <x>420</x>
+     <y>20</y>
+     <width>20</width>
+     <height>271</height>
+    </rect>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Vertical</enum>
    </property>
   </widget>
  </widget>
