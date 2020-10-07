@@ -1,0 +1,6 @@
+# QGIS_plugin_develop
+地理信息系统课程设计
+基于QGIS的插件开发
+polygon_to_line项目是插件本体，另一个是测试用的项目，main.py不用管。
+
+与QGIS插件的模板一致，polygon_to_line_dialog_base.py是pyuic5根据ui文件生成的，polygon_to_line_dialog.py定义了一些控件的初始化参数，polygon_to_line.py实现了主要的功能
